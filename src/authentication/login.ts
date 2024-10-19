@@ -23,7 +23,7 @@ export function authenticateUser(email: string, password: string): void {
         localStorage.setItem("authToken", email);
         window.location.href = "../index.html";
     } else {
-        alert("Credenciales incorrectas. Por favor intente de nuevo.");
+        alert("Credenciales incorrectas123. Por favor intente de nuevo.");
     }
 }
 

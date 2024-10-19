@@ -13,7 +13,7 @@ export function authenticateUser(email, password) {
         window.location.href = "../index.html";
     }
     else {
-        alert("Credenciales incorrectas. Por favor intente de nuevo.");
+        alert("Credenciales incorrectas123. Por favor intente de nuevo.");
     }
 }
 function handleLoginSubmit(event) {

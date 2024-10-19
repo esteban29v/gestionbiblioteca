@@ -8,9 +8,9 @@ function isAuthenticated(): boolean {
 function redirectToLogin(): void {
     const currentPath = window.location.pathname;
 
-    const loginPath = currentPath.includes("/authentication/")
-        ? "login.html"
-        : "authentication/login.html";
+    const loginPath = currentPath.includes("authentication/")
+        ? "src/authentication/login.html"
+        : "src/authentication/login.html";
 
     window.location.href = loginPath;
 }
