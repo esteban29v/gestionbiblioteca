@@ -1,3 +1,5 @@
+import { ROOT_URL } from '../config.js';
+
 interface User {
     firstName: string;
     lastName: string;
@@ -14,6 +16,11 @@ function getUsersFromLocalStorage(): User[] {
     return JSON.parse(usersJSON) as User[];
 }
 
+export function logout() {
+    localStorage.removeItem('authToken');
+    window.location.href = `${ROOT_URL}src/authentication/login.html`;
+}
+
 export function authenticateUser(email: string, password: string): void {
     const users = getUsersFromLocalStorage();
 
@@ -21,9 +28,9 @@ export function authenticateUser(email: string, password: string): void {
 
     if (userFound !== undefined) {
         localStorage.setItem("authToken", email);
-        window.location.href = "../index.html";
+        window.location.href = `${ROOT_URL}index.html`;
     } else {
-        alert("Credenciales incorrectas123. Por favor intente de nuevo.");
+        alert("Credenciales incorrectas. Por favor intente de nuevo.");
     }
 }
 

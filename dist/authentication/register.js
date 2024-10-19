@@ -1,5 +1,4 @@
 import { authenticateUser } from './login.js';
-console.log(authenticateUser('asd', 'asd'));
 let users = [];
 function validateRegistrationForm(name, surname, email, password) {
     const errors = [];
@@ -16,6 +15,10 @@ function validateRegistrationForm(name, surname, email, password) {
     const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d\W]{8,}$/;
     if (!passwordPattern.test(password)) {
         errors.push("La contraseña debe tener al menos 8 caracteres, con al menos una mayúscula y una minúscula.");
+    }
+    const emailExists = users.some(user => user.email === email);
+    if (emailExists) {
+        errors.push("El correo electrónico ya está registrado.");
     }
     return errors;
 }
@@ -41,7 +44,7 @@ function handleFormSubmit(event) {
     else {
         users.push(newUser);
         saveUsersToLocalStorage();
-        alert("Usuario creado correctamente");
+        authenticateUser(newUser.email, newUser.password);
         document.getElementById("registerForm").reset();
     }
 }

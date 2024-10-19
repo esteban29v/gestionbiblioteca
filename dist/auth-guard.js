@@ -1,6 +1,5 @@
 "use strict";
 const relativePath = window.location.pathname;
-console.log(relativePath);
 function isAuthenticated() {
     const token = localStorage.getItem("authToken");
     return token !== null;

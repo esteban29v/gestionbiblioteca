@@ -1,3 +1,10 @@
-// main.ts
+import {logout} from './authentication/login.js'
 
-// Simulación de autenticación
+document.addEventListener("DOMContentLoaded", () => {
+    const boton = document.getElementById('logout') as HTMLAnchorElement;
+
+    boton.addEventListener('click', (event) => {
+        event.preventDefault();
+        logout();
+    });
+});

@@ -1,5 +1,5 @@
 const relativePath = window.location.pathname;
-console.log(relativePath);
+
 function isAuthenticated(): boolean {
     const token = localStorage.getItem("authToken");
     return token !== null;
