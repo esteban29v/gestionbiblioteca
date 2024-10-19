@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Sistema de Gestión de Biblioteca</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../../dist/tailwind.css">
+
+        <script type="module" src="../../dist/authentication/register.js"></script>
+    </head>
+<body class="bg-gray-100" id="container">
+    
+    <div class="min-h-screen flex items-center justify-center">
+        <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+            <h2 class="text-2xl font-bold mb-6 text-center">Registro de Usuario</h2>
+            <form id="registerForm" class="space-y-4">
+                <div>
+                    <label for="firstName" class="block text-sm font-medium text-gray-700">Nombres</label>
+                    <input id="firstName" type="text" required class="mt-1 block w-full p-2 border rounded-md"
+                    placeholder="Ingresa los nombres">
+                </div>
+                <div>
+                    <label for="lastName" class="block text-sm font-medium text-gray-700">Apellidos</label>
+                    <input id="lastName" type="text" required class="mt-1 block w-full p-2 border rounded-md"
+                    placeholder="Ingresa los apellidos">
+                </div>
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700">Correo Electrónico</label>
+                    <input id="email" type="email" required class="mt-1 block w-full p-2 border rounded-md"
+                    placeholder="Ingresa el correo electrónico">
+                </div>
+                <div>
+                    <label for="password" class="block text-sm font-medium text-gray-700">Contraseña</label>
+                    <input id="password" type="password" required class="mt-1 block w-full p-2 border rounded-md"
+                    placeholder="Ingresa los contraseña">
+                </div>
+                <button type="submit" class="w-full py-2 px-4 bg-yellow-600 text-white rounded-md">Registrarse</button>
+            </form>
+            <p class="mt-4 text-center text-sm text-gray-600">
+                ¿Ya tienes una cuenta? 
+                <a href="login.html" class="text-yellow-600 hover:underline">Inicia sesión aquí</a>.
+            </p>
+        </div>
+    </div>
+</body>
+<script>
+    function showAlert(type, message) {
+    const alertDiv = document.createElement("div");
+    alertDiv.className = `alert p-4 mb-4 text-sm text-white rounded-lg ${
+        type === "success" ? "bg-green-500" :
+        type === "warning" ? "bg-yellow-500" :
+        "bg-red-500"
+    }`;
+    alertDiv.textContent = message;
+
+    // Agregar la alerta al contenedor
+    const container = document.getElementById("container");
+    container.appendChild(alertDiv);
+
+    // Agregar un pequeño retraso antes de ocultar
+    setTimeout(() => {
+        alertDiv.classList.add("hidden");
+    }, 3000); // Mantener visible por 3 segundos
+
+    // Remover la alerta después de la animación
+    setTimeout(() => {
+        alertDiv.remove();
+    }, 3500); // Remover después de la animación
+}
+
+    document.addEventListener("DOMContentLoaded", () => {
+            // Ejemplo de uso
+showAlert("success", "Tu registro se ha completado correctamente.");
+        });
+
+</script>
+</html>
