@@ -18,6 +18,7 @@ function getUsersFromLocalStorage(): User[] {
 
 export function logout() {
     localStorage.removeItem('authToken');
+    localStorage.removeItem('books');
     window.location.href = `${ROOT_URL}src/authentication/login.html`;
 }
 

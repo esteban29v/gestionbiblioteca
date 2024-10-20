@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sistema de Gestión de Biblioteca</title>
+
+    <link rel="icon" href="https://ucompensar.edu.co/wp-content/uploads/2021/04/favicon-150x150.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&display=swap" rel="stylesheet">
+    <script type="module" src="../../dist/main.js"></script>
+
+    <script type="module" src="../../dist/auth-guard.js"></script>
+    <link rel="stylesheet" href="../../dist/tailwind.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body class="bg-yellow-50 text-gray-900 font-sans min-h-screen flex flex-col">
+    <header class="bg-gray-800 text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-4xl font-bold"><a href="../../index.html">Biblioteca Virtual</a></h1>
+            <nav class="relative mr-4 md:flex space-x-4">
+                <button id="user-menu-button" class="flex items-center focus:outline-none text-2xl">
+                    <i id="profileButton" class="fa-solid fa-list"></i>
+                </button>
+                <div id="user-menu" class="absolute right-7 hidden mt-2 w-40 bg-white text-black shadow-lg z-20">
+                    <a href="./profile.html" class="block px-4 py-2 hover:bg-gray-200">Perfil de usuario</a>
+                    <a id="logout" class="hover:cursor-pointer block px-4 py-2 hover:bg-gray-200">Cerrar sesión</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const userMenuButton = document.getElementById('user-menu-button');
+            const userMenu = document.getElementById('user-menu');
+            const buttonProfile = document.getElementById('profileButton');
+
+            userMenuButton.addEventListener('click', () => {
+                userMenu.classList.toggle('hidden');
+            });
+
+            window.addEventListener('click', (event) => {
+                if (event.target !== buttonProfile) {
+                    userMenu.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+
+    <main class="container mx-auto px-4 py-10 flex-grow">
+        <section class="text-center mb-12">
+            <h2 class="text-3xl font-bold mb-4">Bienvenido al Catálogo Virtual</h2>
+            <p class="text-lg text-gray-700">Encuentra, organiza y accede a los recursos bibliográficos desde un solo lugar.</p>
+        </section>
+
+        <!-- Sección para editar usuario -->
+        <section class="mb-12">
+            <h3 class="text-2xl font-bold mb-4">Editar Usuario</h3>
+            <form id="userForm" class="bg-white p-6 rounded shadow-md">
+                <div class="mb-4">
+                    <label for="firstName" class="block text-gray-700">Nombre</label>
+                    <input type="text" id="firstName" class="w-full p-2 border border-gray-300 rounded-md" required>
+                </div>
+                <div class="mb-4">
+                    <label for="lastName" class="block text-gray-700">Apellido</label>
+                    <input type="text" id="lastName" class="w-full p-2 border border-gray-300 rounded-md" required>
+                </div>
+                <div class="mb-4">
+                    <label for="email" class="block text-gray-700">Correo Electrónico</label>
+                    <input type="email" id="email" class="w-full p-2 border border-gray-300 rounded-md bg-gray-200" disabled>
+                </div>
+                <div class="mb-4">
+                    <label for="password" class="block text-gray-700">Contraseña</label>
+                    <input type="password" id="password" class="w-full p-2 border border-gray-300 rounded-md" required>
+                </div>
+                <button type="submit" class="bg-blue-500 text-white p-2 rounded-md">Guardar Cambios</button>
+            </form>
+        </section>
+
+        <section>
+            <h3 class="text-2xl font-bold mb-4">Libros Disponibles</h3>
+            <div id="userBooks" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 bg-amber-200 p-5 rounded-md">
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-yellow-600 text-white py-4 mt-10">
+        <div class="container mx-auto text-center">
+            <p class="text-sm">&copy; 2024 Biblioteca Central - Todos los derechos reservados</p>
+        </div>
+    </footer>
+
+    <script>
+        const bookSelected = {};
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadUser();
+            loadBooks();
+
+            async function loadUser() {
+                const authToken = localStorage.getItem('authToken');
+                const user = JSON.parse(localStorage.getItem('users')).find(user => user.email == authToken);
+
+                document.getElementById('firstName').value = user.firstName;
+                document.getElementById('lastName').value = user.lastName;
+                document.getElementById('email').value = user.email;
+                document.getElementById('password').value = user.password;
+
+                document.getElementById('userForm').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const updatedUser = {
+                        firstName: document.getElementById('firstName').value,
+                        lastName: document.getElementById('lastName').value,
+                        email: document.getElementById('email').value,
+                        password: document.getElementById('password').value,
+                    };
+                    
+                    let users = JSON.parse(localStorage.getItem('users')) || [];
+
+                    const userIndex = users.findIndex(user => user.email === document.getElementById('email').value);
+
+                    if (userIndex !== -1) {
+                        users.splice(userIndex, 1);
+                        users.push(updatedUser);
+                        localStorage.setItem('users', JSON.stringify(users));
+                        console.log('Usuario eliminado:', document.getElementById('email').value);
+                    } else {
+                        console.log('Usuario no encontrado');
+                    }
+                });
+            }
+
+            async function loadBooks() {
+
+                const books = JSON.parse(localStorage.getItem('books'));
+                console.log(books);
+
+                const userBooksDiv = document.getElementById('userBooks');
+
+                if (books?.length > 0) {
+                    books.forEach(book => {
+                        const bookDiv = document.createElement('div');
+                        bookDiv.className = 'bg-white rounded-lg shadow-md p-6';
+
+                        const booksRequested = localStorage.getItem('books') ? JSON.parse(localStorage.getItem('books')) : [];
+                        const bookExists = booksRequested.some(bookStorage => bookStorage.title === book.titulo);
+            
+                        bookDiv.innerHTML = `
+                            <img src="../../${book.imagen}" alt="${book.title}" class="w-full h-48 object-cover mb-4 rounded">
+                            <h3 class="text-xl font-semibold mb-2">${book.title}</h3>
+                            <p class="text-gray-600">${book.autor}</p>
+                            <p class="text-gray-600">${book.genero}</p>
+                            <p class="text-gray-600">${book.ano_publicacion}</p>`;
+
+                        userBooksDiv.appendChild(bookDiv);
+                    });
+                } else {
+                    userBooksDiv.innerHTML = '<p class="text-red-500">No se encontraron libros disponibles.</p>';
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
