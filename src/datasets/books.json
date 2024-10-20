@@ -4,7 +4,7 @@
         "autor": "Gabriel García Márquez",
         "ano_publicacion": 1967,
         "genero": "Ficción",
-        "imagen": "../src/assets/images/cien_anos_soledad.jpg",
+        "imagen": "./src/assets/images/cien_anos_soledad.jpg",
         "resumen": "La historia de la familia Buendía en el pueblo ficticio de Macondo, que abarca varias generaciones y explora temas de soledad, poder y destino."
     },
     {
@@ -12,7 +12,7 @@
         "autor": "Miguel de Cervantes",
         "ano_publicacion": 1605,
         "genero": "Ficción",
-        "imagen": "../src/assets/images/quijote.jpg",
+        "imagen": "./src/assets/images/quijote.jpg",
         "resumen": "Las aventuras de un hidalgo que se vuelve loco y decide convertirse en caballero andante, enfrentándose a molinos de viento y otros desafíos imaginarios."
     },
     {
@@ -20,7 +20,7 @@
         "autor": "Gabriel García Márquez",
         "ano_publicacion": 1985,
         "genero": "Ficción",
-        "imagen": "../src/assets/images/colera.jpg",
+        "imagen": "./src/assets/images/colera.jpg",
         "resumen": "La historia de amor entre Florentino Ariza y Fermina Daza, que perdura a lo largo de los años a pesar de los obstáculos."
     },
     {
@@ -28,7 +28,7 @@
         "autor": "Isabel Allende",
         "ano_publicacion": 1982,
         "genero": "Ficción",
-        "imagen": "../src/assets/images/espiritus.webp",
+        "imagen": "./src/assets/images/espiritus.webp",
         "resumen": "La saga familiar de los Trueba, que entrelaza la historia personal y política de Chile a través de varias generaciones."
     },
     {
@@ -36,7 +36,7 @@
         "autor": "George Orwell",
         "ano_publicacion": 1949,
         "genero": "Distopía",
-        "imagen": "../src/assets/images/1984.webp",
+        "imagen": "./src/assets/images/1984.webp",
         "resumen": "Un futuro totalitario donde el Estado supervisa todos los aspectos de la vida de los ciudadanos, explorando temas de vigilancia y control."
     },
     {
@@ -44,7 +44,7 @@
         "autor": "Antoine de Saint-Exupéry",
         "ano_publicacion": 1943,
         "genero": "Ficción",
-        "imagen": "../src/assets/images/principito.webp",
+        "imagen": "./src/assets/images/principito.webp",
         "resumen": "La historia de un niño que viaja de planeta en planeta, descubriendo la importancia de la amistad y la imaginación."
     },
     {
@@ -52,7 +52,7 @@
         "autor": "Ray Bradbury",
         "ano_publicacion": 1953,
         "genero": "Ciencia ficción",
-        "imagen": "../src/assets/images/451.webp",
+        "imagen": "./src/assets/images/451.webp",
         "resumen": "En un futuro donde los libros están prohibidos, un bombero comienza a cuestionar su papel en la sociedad y la censura."
     },
     {
@@ -60,7 +60,7 @@
         "autor": "Jane Austen",
         "ano_publicacion": 1813,
         "genero": "Romance",
-        "imagen": "../src/assets/images/orgullo.jpg",
+        "imagen": "./src/assets/images/orgullo.jpg",
         "resumen": "Las complejidades del amor y las relaciones sociales en la Inglaterra del siglo XIX, centradas en Elizabeth Bennet y Mr. Darcy."
     },
     {
@@ -68,7 +68,7 @@
         "autor": "Gabriel García Márquez",
         "ano_publicacion": 1981,
         "genero": "Ficción",
-        "imagen": "../src/assets/images/cronica.webp",
+        "imagen": "./src/assets/images/cronica.webp",
         "resumen": "La historia de un asesinato anunciado en un pueblo, donde todos saben lo que va a suceder pero nadie lo impide."
     },
     {
@@ -76,7 +76,7 @@
         "autor": "J.D. Salinger",
         "ano_publicacion": 1951,
         "genero": "Ficción",
-        "imagen": "../src/assets/images/centeno.jpg",
+        "imagen": "./src/assets/images/centeno.jpg",
         "resumen": "Las reflexiones de un joven rebelde, Holden Caulfield, mientras busca su lugar en el mundo después de ser expulsado de la escuela."
     }
 ]

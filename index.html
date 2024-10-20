@@ -23,7 +23,6 @@
                     <i id="profileButton" class="fa-solid fa-list"></i>
                 </button>
                 <div id="user-menu" class="absolute right-7 hidden mt-2 w-40 bg-white text-black shadow-lg z-20">
-                    <a href="/src/asd.html" class="block px-4 py-2 hover:bg-gray-200">Catálogo de libros</a>
                     <a href="#" class="block px-4 py-2 hover:bg-gray-200">Perfil de usuario</a>
                     <a id="logout" class="hover:cursor-pointer block px-4 py-2 hover:bg-gray-200">Cerrar sesión</a>
                 </div>
@@ -119,22 +118,22 @@
             const closeModalBtns = document.querySelectorAll('#closeModalBtn, #closeModalBtnBottom');
 
             openModalBtn.addEventListener('click', () => {
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
             });
 
             closeModalBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                modal.classList.remove('flex');
-                modal.classList.add('hidden');
-            });
+                btn.addEventListener('click', () => {
+                    modal.classList.remove('flex');
+                    modal.classList.add('hidden');
+                });
             });
 
             window.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.classList.remove('flex');
-                modal.classList.add('hidden');
-            }
+                if (e.target === modal) {
+                    modal.classList.remove('flex');
+                    modal.classList.add('hidden');
+                }
             });
         });
 
